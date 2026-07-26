@@ -1,14 +1,44 @@
 {
-  "extends": "@vue/tsconfig/tsconfig.json",
   "compilerOptions": {
-    "sourceMap": true,
+    // 以下选项原继承自 @vue/tsconfig，内联以避免其包含 TS 5.5+ 已删除的
+    // preserveValueImports / importsNotUsedAsValues，改用 verbatimModuleSyntax。
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "useDefineForClassFields": true,
+    "jsx": "preserve",
+    "noImplicitThis": true,
+    "strict": true,
+    "isolatedModules": true,
+    "target": "ESNext",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": [
+        "./src/*"
+      ]
     },
-    "lib": ["esnext", "dom"],
-    "types": ["@dcloudio/types"],
-    "verbatimModuleSyntax": true
+    "lib": [
+      "esnext",
+      "dom"
+    ],
+    "verbatimModuleSyntax": true,
+    "types": [
+      "@dcloudio/types",
+      "@uni-helper/uni-app-types",
+      "@types/wechat-miniprogram"
+    ]
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue"
+  ],
+  "exclude": [
+    "node_modules",
+    "unpackage",
+    "src/**/*.nvue"
+  ]
 }
